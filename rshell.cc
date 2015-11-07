@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sys/wait.h>
 #include <unistd.h>
+#include <stdio.h>
+#include <errno.h>
 #include <stdlib.h>
 #include <cstdlib>
 #include <string.h>
@@ -84,14 +86,15 @@ int main()
 					//Check if the command failed to execute.
 					if(execvp(args[0],args) == -1)
 					{
-						cerr << "Invalid Command." << endl;
-						exit(0);
+						perror("Invalid Command.");
+						exit(-7);
 					}
 				}
 				else
 				{
 					//This makes the parent process wait for the child process to finish.
-					wait(&status);
+					if(wait(&status) == -1)
+						perror("Error occured with wait sys call");
 					//Use to see if previous command was a success or a failure. Returns a certain number if it fails.
 					childret = WEXITSTATUS(status);
 					if(childret != 0)
