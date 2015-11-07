@@ -1,2 +1,3 @@
 # rshell
-unix shell in c++
+Rshell
+by Robert Martinez and Cody falzone
