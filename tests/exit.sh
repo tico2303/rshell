@@ -1,6 +1,9 @@
 #!/bin/bash
 
-ls -la;exit
-./rshell
-ps && ls -la;exit
+exit
+bin/rshell
 
+ls;exit
+bin/rshell
+
+ps && exit
