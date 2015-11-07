@@ -1,11 +1,3 @@
-
-MKDIR = mkdir
-.PHONY: directories
-all: directories rshell
-directories: ${OUT_DIR}
-${OUT_DIR}:
-	${MKDIR} ${OUT_DIR}
-
 CC=g++
 CFLAGS =-c -Wall -Werror -ansi -pendantic
 
