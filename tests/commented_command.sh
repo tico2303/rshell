@@ -8,7 +8,7 @@ echo "yes" #what
 echo #this is not a cave so there shouldn't be an echo
 uname #commented
 whoami
-cat single_command.sh
+cat /bin/rshell.cc
 pwd
 
 

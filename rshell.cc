@@ -18,6 +18,7 @@ void parse(string userline, char* list[]);
 int smallest(int a,int b,int c);
 queue<string> parse_userline(string line);
 bool logic(queue<string>& q, bool previous);
+void printq(queue<string> p); 
 
 int main()
 {
@@ -41,7 +42,7 @@ int main()
 		//Takes in the line the user entered and parses on all connectors,
 		//and forming returning a queue.
 		q = parse_userline(userline);
-
+		printq(q);
 		//While there is still commands to execute.
 		while(!q.empty())
 		{
@@ -312,4 +313,19 @@ void parse(string userline, char* list[])
 	}
 	//The last element of the array passed to execvp must be NULL.
 	list[i+1] = NULL;
+}
+
+
+void printq(queue<string> q)
+{
+	string x;
+	queue<string> temp = q;
+	
+	cout << "Printing Queue: " << endl;
+	while(!temp.empty())
+	{
+		x = temp.front();
+		cout << x << endl;
+		temp.pop();
+	}
 }

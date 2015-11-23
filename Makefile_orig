@@ -1,0 +1,17 @@
+CC=g++
+CFLAGS =-c -Wall -Werror -ansi -pendantic
+
+all: rshell
+
+rshell: rshell.cc
+	mkdir bin
+	$(CC) rshell.cc -o bin/rshell
+
+rshell.o: rshell.cc
+	mkdir bin
+	$(CC) $(CFLAGS) -o bin/$@
+
+clean:
+	rm *o rshell
+	rm -rf bin
+
