@@ -35,9 +35,6 @@ string Tree::checkChar(string line, int start, int& pos)
 	ql = line.find_first_of("\"", start);
 	qr = line.find_first_of("\"", ql+1);
 
-//	cout << "ql : " << ql << endl;
-//	cout << "qr : " << qr << endl;
-
 	//Save the position of the first encountered connector.
 	pos = smallest(semi,orr,andd, lp, rp);
 	
@@ -121,7 +118,6 @@ string Tree::parseOn(vector<string> &v, string line, int pos, string x)
 	if(pos == -1)
 	{
 		//If its all white space, there no command to execute at all.
-//		cout << "pos == -1" <<endl;
 		if(line.find_first_not_of(" ") == string::npos)
 		{
 			line ="";
@@ -139,19 +135,13 @@ string Tree::parseOn(vector<string> &v, string line, int pos, string x)
 			return line;
 		}
 	}
-	else if(pos == 0)
-	{
-			throw invalid_argument("Error: Expected Addition Argument.");
-				return "";
-
-	}
-	else if(pos !=0)
+	if(pos !=0)
 	{
 		newpos = line.find_first_of(x);
 		s = line.substr(0,newpos);
 		if(s == "")
 		{
-			throw invalid_argument("Error: Expected Addition Argument.");
+			throw invalid_argument("Error(2): Expected Addition Argument.");
 				return "";
 		}
 		if(s.find_first_not_of(" ") != string::npos)
@@ -199,7 +189,6 @@ vector<string> Tree::parse_userline(string line)
 	{
 		//If there any connectors, save their spots in the string.
 		x = checkChar(line, 0, pos);
-//		cout <<"line: " <<line<<endl;
 		//Check if there was no connector encountered.
 		line = parseOn(vs, line, pos, x);
 	}
