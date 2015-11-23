@@ -87,7 +87,6 @@ void Test::executeTest(string cmd)
 	int dirIndex = 0;
 	int x = 0;
 
-	printv(argv);	
 	if(argv[0] != "test" and argv[0] != "[") 
 	{
 		throw invalid_argument("Invalid use of test command");
@@ -104,9 +103,17 @@ void Test::executeTest(string cmd)
 	else 
 		dirIndex = size;
 
+	
+	if(argv[1][0] == '-')
+	{
+		if(argv[1][1] != 'd' and  argv[1][1] != 'f' and argv[1][1] != 'e')
+		{
+			throw invalid_argument("Error: Invalid Test Option.");
+			return;
+		}
+	}
 	if(stat((char*)argv[dirIndex].c_str(), &sb) == -1)
 		perror("stat");
-
 	else if(argv[1] == "-d")
 	{
 		bool isdir =  S_ISDIR(sb.st_mode); 
